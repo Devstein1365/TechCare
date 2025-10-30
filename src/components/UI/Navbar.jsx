@@ -9,14 +9,14 @@ import { IoSettingsOutline } from "react-icons/io5";
 
 const Navbar = () => {
   return (
-    <nav className="bg-white rounded-full w-full flex items-center justify-between px-[32px] py-[12px] mb-[18px]">
+    <nav className="bg-white rounded-full w-full flex items-center justify-between px-8 py-3 mb-[18px]">
       {/* Logo */}
       <div className="flex items-center">
-        <img src={TestLogo} alt="Tech Care" className="w-[210px] h-[48px]" />
+        <img src={TestLogo} alt="Tech Care" className="w-[210px] h-12" />
       </div>
 
       {/* Navigation Menu */}
-      <div className="flex items-center gap-[40px]">
+      <div className="flex items-center gap-10">
         <a
           href="#"
           className="flex items-center gap-2 text-[#072635] hover:opacity-70 transition"

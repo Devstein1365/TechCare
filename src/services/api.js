@@ -2,18 +2,12 @@ const API_URL = "https://fedskillstest.coalitiontechnologies.workers.dev";
 const USERNAME = "coalition";
 const PASSWORD = "skills-test";
 
-/**
- * Encode credentials to Base64 for Basic Authentication
- * This is done on the client side as per requirements (not hardcoded)
- */
+
 const encodeCredentials = (username, password) => {
   return btoa(`${username}:${password}`);
 };
 
-/**
- * Fetch patient data from the API
- * Returns only Jessica Taylor's data as per requirements
- */
+
 export const fetchPatientData = async () => {
   try {
     const encodedAuth = encodeCredentials(USERNAME, PASSWORD);
