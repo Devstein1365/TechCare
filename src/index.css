@@ -1,0 +1,55 @@
+/* Import Manrope Font */
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+@import "tailwindcss";
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #c4c4c4 #f1f1f1;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  .grid-cols-\[370px_1fr_370px\] {
+    grid-template-columns: 320px 1fr 320px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .grid-cols-\[370px_1fr_370px\] {
+    grid-template-columns: 1fr;
+  }
+}
