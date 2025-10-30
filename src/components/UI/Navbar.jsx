@@ -1,58 +1,56 @@
 import React from "react";
-import TestLogo from "../../assets/TestLogo.svg";
-import homeIcon from "../../assets/home_FILL0_wght300_GRAD0_opsz24.svg";
-import groupIcon from "../../assets/group_FILL0_wght300_GRAD0_opsz24.svg";
-import calendarIcon from "../../assets/calendar_today_FILL0_wght300_GRAD0_opsz24.svg";
-import chatIcon from "../../assets/chat_bubble_FILL0_wght300_GRAD0_opsz24.svg";
-import creditCardIcon from "../../assets/credit_card_FILL0_wght300_GRAD0_opsz24.svg";
-import settingsIcon from "../../assets/settings_FILL0_wght300_GRAD0_opsz24.svg";
-import moreVertIcon from "../../assets/more_vert_FILL0_wght300_GRAD0_opsz24.svg";
+import TestLogo from "../../assets/TestLogo.png";
 import doctorImage from "../../assets/senior-woman-doctor-and-portrait-smile-for-health-2023-11-27-05-18-16-utc@2x.png";
+import { GoCalendar, GoHome } from "react-icons/go";
+import { MdOutlineMoreVert, MdOutlinePeopleAlt } from "react-icons/md";
+import { FiMessageSquare } from "react-icons/fi";
+import { SlCreditCard } from "react-icons/sl";
+import { IoSettingsOutline } from "react-icons/io5";
 
 const Navbar = () => {
   return (
-    <nav className="bg-white rounded-[70px] px-8 py-3 flex items-center justify-between shadow-sm mb-8">
+    <nav className="bg-white rounded-full w-full flex items-center justify-between px-[32px] py-[12px] mb-[18px]">
       {/* Logo */}
       <div className="flex items-center">
-        <img src={TestLogo} alt="Tech Care" className="h-12" />
+        <img src={TestLogo} alt="Tech Care" className="w-[210px] h-[48px]" />
       </div>
 
       {/* Navigation Menu */}
-      <div className="flex items-center gap-10">
+      <div className="flex items-center gap-[40px]">
         <a
           href="#"
           className="flex items-center gap-2 text-[#072635] hover:opacity-70 transition"
         >
-          <img src={homeIcon} alt="" className="w-[17px] h-[17px]" />
-          <span className="font-bold text-sm">Overview</span>
+          <GoHome />
+          <span className="font-bold text-[14px]">Overview</span>
         </a>
         <a
           href="#"
           className="flex items-center gap-2 bg-[#01F0FF] px-4 py-2 rounded-[41px] text-[#072635] transition"
         >
-          <img src={groupIcon} alt="" className="w-[17px] h-[17px]" />
-          <span className="font-bold text-sm">Patients</span>
+          <MdOutlinePeopleAlt />
+          <span className="font-bold text-[14px]">Patients</span>
         </a>
         <a
           href="#"
           className="flex items-center gap-2 text-[#072635] hover:opacity-70 transition"
         >
-          <img src={calendarIcon} alt="" className="w-[17px] h-[17px]" />
-          <span className="font-bold text-sm">Schedule</span>
+          <GoCalendar />
+          <span className="font-bold text-[14px]">Schedule</span>
         </a>
         <a
           href="#"
           className="flex items-center gap-2 text-[#072635] hover:opacity-70 transition"
         >
-          <img src={chatIcon} alt="" className="w-[17px] h-[17px]" />
-          <span className="font-bold text-sm">Message</span>
+          <FiMessageSquare />
+          <span className="font-bold text-[14px]">Message</span>
         </a>
         <a
           href="#"
           className="flex items-center gap-2 text-[#072635] hover:opacity-70 transition"
         >
-          <img src={creditCardIcon} alt="" className="w-[17px] h-[17px]" />
-          <span className="font-bold text-sm">Transactions</span>
+          <SlCreditCard />
+          <span className="font-bold text-[14px]">Transactions</span>
         </a>
       </div>
 
@@ -64,20 +62,12 @@ const Navbar = () => {
           className="w-11 h-11 rounded-full object-cover"
         />
         <div className="border-r border-[#EDEDED] pr-3">
-          <p className="text-sm font-bold text-[#072635]">Dr. Jose Simmons</p>
-          <p className="text-xs text-[#707070]">General Practitioner</p>
+          <p className="text-[14px] font-bold text-[#072635]">Dr. Jose Simmons</p>
+          <p className="text-[14px] text-[#707070]">General Practitioner</p>
         </div>
         <div className="flex items-center gap-2">
-          <img
-            src={settingsIcon}
-            alt="Settings"
-            className="w-5 h-5 cursor-pointer"
-          />
-          <img
-            src={moreVertIcon}
-            alt="More"
-            className="w-5 h-5 cursor-pointer"
-          />
+          <IoSettingsOutline />
+          <MdOutlineMoreVert />
         </div>
       </div>
     </nav>

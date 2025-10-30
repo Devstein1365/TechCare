@@ -1,5 +1,8 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
+import Respiratory from "../assets/respiratory rate.png";
+import Temperature from "../assets/temperature.png";
+import HearRate from "../assets/HeartBPM.png";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,12 +14,7 @@ import {
   Legend,
   Filler,
 } from "chart.js";
-import respiratoryIcon from "../../assets/respiratoryRate.svg";
-import temperatureIcon from "../../assets/temperature.svg";
-import heartIcon from "../../assets/HeartBPM.svg";
-import expandIcon from "../../assets/expand_more_FILL0_wght300_GRAD0_opsz24.svg";
-import arrowUpIcon from "../../assets/ArrowUp.svg";
-import arrowDownIcon from "../../assets/ArrowDown.svg";
+import { FaSortDown, FaSortUp } from "react-icons/fa";
 
 ChartJS.register(
   CategoryScale,
@@ -89,25 +87,35 @@ const DiagnosisHistory = ({ diagnosisHistory }) => {
         beginAtZero: false,
         min: 60,
         max: 180,
-        grid: {
-          color: "#f0f0f0",
-        },
         ticks: {
+          stepSize: 20,
           color: "#072635",
           font: {
             size: 12,
           },
+        },
+        grid: {
+          display: true,
+          color: "#E0E5E7",
+          drawBorder: false,
+          lineWidth: 1,
+        },
+        border: {
+          display: false,
         },
       },
       x: {
-        grid: {
-          display: false,
-        },
         ticks: {
           color: "#072635",
           font: {
             size: 12,
           },
+        },
+        grid: {
+          display: false,
+        },
+        border: {
+          display: false,
         },
       },
     },
@@ -123,54 +131,55 @@ const DiagnosisHistory = ({ diagnosisHistory }) => {
       </h2>
 
       {/* Blood Pressure Chart Section */}
-      <div className="bg-[#F4F0FE] rounded-xl p-4 mb-5">
-        <div className="flex items-start justify-between mb-6">
-          <div>
-            <h3 className="text-lg font-bold text-[#072635] mb-1">
+      <div className="flex items-start gap-15 bg-[#F4F0FE] rounded-xl p-5 mb-5">
+        <div className="w-[80%] grid mb-6">
+          <div className="flex justify-between">
+            <h3 className="text-[18px] font-bold text-[#072635] mb-1">
               Blood Pressure
             </h3>
-            <p className="text-sm text-[#072635] flex items-center gap-2">
-              Last 6 months
-              <img src={expandIcon} alt="" className="w-3 h-3" />
-            </p>
+            <div className="flex items-start gap-2">
+              <p className="text-[14px] text-[#072635]">Last 6 months</p>
+              <FaSortDown />
+            </div>
+          </div>
+          {/* Chart */}
+          <div className="h-[280px] mb-5">
+            <Line data={chartData} options={options} />
           </div>
         </div>
 
-        {/* Chart */}
-        <div className="h-[240px] mb-4">
-          <Line data={chartData} options={options} />
-        </div>
-
-        {/* Blood Pressure Summary */}
-        <div className="grid grid-cols-2 gap-5 mt-4">
-          {/* Systolic */}
-          <div className="flex items-start gap-2">
-            <div className="w-3 h-3 rounded-full bg-[#E66FD2] mt-1"></div>
+        {/* Blood Pressure Summary Cards */}
+        <div className="w-[25%] pt-5">
+          <div className="grid gap-6">
+            {/* Systolic */}
             <div>
-              <p className="text-sm font-bold text-[#072635] mb-1">Systolic</p>
-              <p className="text-[22px] font-bold text-[#072635] mb-1">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-3.5 h-3.5 rounded-full bg-[#E66FD2]"></div>
+                <p className="text-sm font-bold text-[#072635]">Systolic</p>
+              </div>
+              <p className="text-[22px] font-extrabold text-[#072635] mb-2">
                 {latestEntry.blood_pressure.systolic.value}
               </p>
-              <div className="flex items-center gap-2">
-                <img src={arrowUpIcon} alt="" className="w-2.5 h-2.5" />
-                <p className="text-xs text-[#072635]">
+              <div className="flex items-end gap-1.5">
+                <FaSortUp />
+                <p className="text-sm text-[#072635]">
                   {latestEntry.blood_pressure.systolic.levels}
                 </p>
               </div>
             </div>
-          </div>
 
-          {/* Diastolic */}
-          <div className="flex items-start gap-2">
-            <div className="w-3 h-3 rounded-full bg-[#8C6FE6] mt-1"></div>
+            {/* Diastolic */}
             <div>
-              <p className="text-sm font-bold text-[#072635] mb-1">Diastolic</p>
-              <p className="text-[22px] font-bold text-[#072635] mb-1">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-3.5 h-3.5 rounded-full bg-[#8C6FE6]"></div>
+                <p className="text-sm font-bold text-[#072635]">Diastolic</p>
+              </div>
+              <p className="text-[22px] font-extrabold text-[#072635] mb-2">
                 {latestEntry.blood_pressure.diastolic.value}
               </p>
-              <div className="flex items-center gap-2">
-                <img src={arrowDownIcon} alt="" className="w-2.5 h-2.5" />
-                <p className="text-xs text-[#072635]">
+              <div className="flex items-start gap-1.5">
+                <FaSortDown />
+                <p className="text-sm text-[#072635]">
                   {latestEntry.blood_pressure.diastolic.levels}
                 </p>
               </div>
@@ -182,17 +191,15 @@ const DiagnosisHistory = ({ diagnosisHistory }) => {
       {/* Vital Stats Cards */}
       <div className="grid grid-cols-3 gap-5">
         {/* Respiratory Rate */}
-        <div className="bg-[#E0F3FA] rounded-xl p-4">
-          <img
-            src={respiratoryIcon}
-            alt="Respiratory Rate"
-            className="w-24 h-24 mb-4"
-          />
-          <p className="text-base font-medium text-[#072635] mb-2">
+        <div className="bg-[#E0F3FA] rounded-xl p-5">
+          <div className="w-24 h-24 mb-4 flex items-center justify-center">
+            <img src={Respiratory} alt="respiratory" />
+          </div>
+          <p className="text-sm font-medium text-[#072635] mb-2">
             Respiratory Rate
           </p>
-          <p className="text-[30px] font-extrabold text-[#072635] mb-2">
-            {latestEntry.respiratory_rate.value} bpm
+          <p className="text-[30px] font-extrabold text-[#072635] mb-1">
+            {latestEntry.respiratory_rate.value} <span>bpm</span>
           </p>
           <p className="text-sm text-[#072635]">
             {latestEntry.respiratory_rate.levels}
@@ -200,17 +207,13 @@ const DiagnosisHistory = ({ diagnosisHistory }) => {
         </div>
 
         {/* Temperature */}
-        <div className="bg-[#FFE6E9] rounded-xl p-4">
-          <img
-            src={temperatureIcon}
-            alt="Temperature"
-            className="w-24 h-24 mb-4"
-          />
-          <p className="text-base font-medium text-[#072635] mb-2">
-            Temperature
-          </p>
-          <p className="text-[30px] font-extrabold text-[#072635] mb-2">
-            {latestEntry.temperature.value}°F
+        <div className="bg-[#FFE6E9] rounded-xl p-5">
+          <div className="w-24 h-24 mb-4 flex items-center justify-center">
+            <img src={Temperature} alt="temperature" />
+          </div>
+          <p className="text-sm font-medium text-[#072635] mb-2">Temperature</p>
+          <p className="text-[30px] font-extrabold text-[#072635] mb-1">
+            {latestEntry.temperature.value} <span>°F</span>
           </p>
           <p className="text-sm text-[#072635]">
             {latestEntry.temperature.levels}
@@ -218,16 +221,16 @@ const DiagnosisHistory = ({ diagnosisHistory }) => {
         </div>
 
         {/* Heart Rate */}
-        <div className="bg-[#FFE6F1] rounded-xl p-4">
-          <img src={heartIcon} alt="Heart Rate" className="w-24 h-24 mb-4" />
-          <p className="text-base font-medium text-[#072635] mb-2">
-            Heart Rate
+        <div className="bg-[#FFE6F1] rounded-xl p-5">
+          <div className="w-24 h-24 mb-4 flex items-center justify-center">
+            <img src={HearRate} alt="heart rate" />
+          </div>
+          <p className="text-sm font-medium text-[#072635] mb-2">Heart Rate</p>
+          <p className="text-[30px] font-extrabold text-[#072635] mb-1">
+            {latestEntry.heart_rate.value} <span>bpm</span>
           </p>
-          <p className="text-[30px] font-extrabold text-[#072635] mb-2">
-            {latestEntry.heart_rate.value} bpm
-          </p>
-          <div className="flex items-center gap-2">
-            <img src={arrowDownIcon} alt="" className="w-2.5 h-2.5" />
+          <div className="flex items-start gap-1.5">
+            <FaSortDown />
             <p className="text-sm text-[#072635]">
               {latestEntry.heart_rate.levels}
             </p>

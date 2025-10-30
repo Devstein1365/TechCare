@@ -1,8 +1,8 @@
 import React from "react";
-import BirthIcon from "../../assets/BirthIcon.svg";
-import FemaleIcon from "../../assets/FemaleIcon.svg";
-import PhoneIcon from "../../assets/PhoneIcon.svg";
-import InsuranceIcon from "../../assets/InsuranceIcon.svg";
+import { CiCalendar } from "react-icons/ci";
+import { GiFemale, GiMale } from "react-icons/gi";
+import { LuShieldCheck } from "react-icons/lu";
+import { MdOutlinePhone, MdPhone } from "react-icons/md";
 
 const PatientProfile = ({ patient }) => {
   if (!patient) {
@@ -36,8 +36,8 @@ const PatientProfile = ({ patient }) => {
       <div className="space-y-6">
         {/* Date of Birth */}
         <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-full bg-[#F6F7F8] flex items-center justify-center flex-shrink-0">
-            <img src={BirthIcon} alt="" className="w-[18px] h-[18px]" />
+          <div className="w-10 h-10 rounded-full bg-[#F6F7F8] flex items-center justify-center shrink-0">
+            <CiCalendar />
           </div>
           <div>
             <p className="text-sm text-[#072635] font-medium mb-1">
@@ -51,8 +51,8 @@ const PatientProfile = ({ patient }) => {
 
         {/* Gender */}
         <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-full bg-[#F6F7F8] flex items-center justify-center flex-shrink-0">
-            <img src={FemaleIcon} alt="" className="w-[18px] h-[18px]" />
+          <div className="w-10 h-10 rounded-full bg-[#F6F7F8] flex items-center justify-center shrink-0">
+            {patient.gender === "Female" ? <GiFemale /> : <GiMale />}
           </div>
           <div>
             <p className="text-sm text-[#072635] font-medium mb-1">Gender</p>
@@ -62,8 +62,8 @@ const PatientProfile = ({ patient }) => {
 
         {/* Contact Info */}
         <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-full bg-[#F6F7F8] flex items-center justify-center flex-shrink-0">
-            <img src={PhoneIcon} alt="" className="w-[18px] h-[18px]" />
+          <div className="w-10 h-10 rounded-full bg-[#F6F7F8] flex items-center justify-center shrink-0">
+            <MdOutlinePhone />
           </div>
           <div>
             <p className="text-sm text-[#072635] font-medium mb-1">
@@ -77,8 +77,8 @@ const PatientProfile = ({ patient }) => {
 
         {/* Emergency Contact */}
         <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-full bg-[#F6F7F8] flex items-center justify-center flex-shrink-0">
-            <img src={PhoneIcon} alt="" className="w-[18px] h-[18px]" />
+          <div className="w-10 h-10 rounded-full bg-[#F6F7F8] flex items-center justify-center shrink-0">
+            <MdOutlinePhone />
           </div>
           <div>
             <p className="text-sm text-[#072635] font-medium mb-1">
@@ -92,8 +92,8 @@ const PatientProfile = ({ patient }) => {
 
         {/* Insurance Provider */}
         <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-full bg-[#F6F7F8] flex items-center justify-center flex-shrink-0">
-            <img src={InsuranceIcon} alt="" className="w-[18px] h-[18px]" />
+          <div className="w-10 h-10 rounded-full bg-[#F6F7F8] flex items-center justify-center shrink-0">
+            <LuShieldCheck/>
           </div>
           <div>
             <p className="text-sm text-[#072635] font-medium mb-1">
@@ -107,7 +107,7 @@ const PatientProfile = ({ patient }) => {
       </div>
 
       {/* Show All Information Button */}
-      <button className="w-full mt-10 bg-[#01F0FF] hover:bg-[#00d4e6] transition text-[#072635] font-bold py-3 rounded-[41px]">
+      <button className="w-full mt-10 bg-[#01F0D0] hover:bg-[#00d4e6] transition text-[#072635] font-bold py-3 rounded-[41px]">
         Show All Information
       </button>
     </div>

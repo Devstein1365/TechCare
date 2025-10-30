@@ -1,5 +1,6 @@
 import React from "react";
-import downloadIcon from "../../assets/downloadIcon.svg";
+import { BsDownload } from "react-icons/bs";
+import { MdDownloadForOffline, MdOutlineFileDownload } from "react-icons/md";
 
 const LabResults = ({ labResults }) => {
   if (!labResults || labResults.length === 0) {
@@ -20,11 +21,7 @@ const LabResults = ({ labResults }) => {
             className="flex items-center justify-between p-4 hover:bg-[#F6F7F8] rounded-lg transition cursor-pointer"
           >
             <p className="text-sm text-[#072635]">{result}</p>
-            <img
-              src={downloadIcon}
-              alt="Download"
-              className="w-5 h-5 cursor-pointer hover:opacity-70 transition"
-            />
+            <MdOutlineFileDownload className="text-[20px] font-bold" />
           </div>
         ))}
       </div>

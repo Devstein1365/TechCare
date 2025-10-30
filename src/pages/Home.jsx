@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { fetchPatientData } from "../services/api";
-import Navbar from "../components/UI/Navbar";
-import PatientsList from "../components/UI/PatientsList";
-import DiagnosisHistory from "../components/DiagnosisHistory";
-import DiagnosticList from "../components/DiagnosticList";
-import PatientProfile from "../components/PatientProfile";
-import LabResults from "../components/LabResults";
+import React, { useEffect, useState } from 'react';
+import { fetchPatientData } from '../services/api';
+import Navbar from '../components/UI/Navbar';
+import PatientsList from '../components/UI/PatientsList';
+import DiagnosisHistory from '../components/DiagnosisHistory';
+import DiagnosticList from '../components/DiagnosticList';
+import PatientProfile from '../components/PatientProfile';
+import LabResults from '../components/LabResults';
 
 const Home = () => {
   const [patientData, setPatientData] = useState(null);
@@ -21,7 +21,7 @@ const Home = () => {
         setError(null);
       } catch (err) {
         setError(err.message);
-        console.error("Failed to load patient data:", err);
+        console.error('Failed to load patient data:', err);
       } finally {
         setLoading(false);
       }
@@ -63,7 +63,7 @@ const Home = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#F6F7F8] p-[18px]">
+    <div className="min-h-screen bg-[#F6F7F8] px-[18px] py-[23px]">
       {/* Navbar */}
       <Navbar />
 
