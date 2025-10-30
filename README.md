@@ -70,7 +70,7 @@ npm run preview
 ```
 TechCare/
 ├── src/
-│   ├── assets/              # Images, icons, and SVG files
+│   ├── assets/              # Optimized images (5 essential files only)
 │   ├── components/          # React components
 │   │   ├── UI/             # Reusable UI components
 │   │   │   ├── Navbar.jsx
@@ -86,7 +86,7 @@ TechCare/
 │   ├── App.jsx             # Main app component
 │   ├── main.jsx            # Application entry point
 │   └── index.css           # Global styles
-├── public/                 # Static assets
+├── public/                 # Static assets (cleaned)
 ├── index.html             # HTML template
 ├── package.json           # Project dependencies
 ├── vite.config.js         # Vite configuration
@@ -99,15 +99,23 @@ The application uses Basic Authentication to securely connect to the Coalition T
 
 **Key Features:**
 
-- Credentials are encoded on the client-side using `btoa()` (not hardcoded)
-- Only fetches and displays Jessica Taylor's patient data
-- Error handling and loading states implemented
+- Credentials are encoded on the client-side using `btoa()` (not hardcoded in plaintext)
+- Dynamic data fetching for all patients in the sidebar
+- Only displays Jessica Taylor's detailed information (as per requirements)
+- Comprehensive error handling and loading states
+- Real-time data - no hardcoded patient information
 
 **API Endpoint:**
 
 ```
 GET https://fedskillstest.coalitiontechnologies.workers.dev
 ```
+
+**Data Flow:**
+
+1. `PatientsList` component fetches all patients from API
+2. `Home` page fetches Jessica Taylor's complete data
+3. All components receive data via props (no static data)
 
 ## 🎨 Color Scheme
 
@@ -135,16 +143,18 @@ The design follows the Adobe XD template color palette:
 
 ### PatientsList
 
-- Scrollable list of patients
-- Highlight for selected patient (Jessica Taylor)
+- Dynamically fetches all patients from API
+- Scrollable list with custom styling
+- Auto-highlights Jessica Taylor
 - Search functionality (UI only)
 
 ### DiagnosisHistory
 
 - Interactive line chart showing blood pressure trends
-- Last 6 months of data
-- Systolic and Diastolic readings
-- Vital signs cards (Respiratory Rate, Temperature, Heart Rate)
+- Last 6 months of data from API
+- Systolic (pink) and Diastolic (purple) readings
+- Horizontal grid lines matching design specifications
+- Vital signs cards with real-time data (Respiratory Rate, Temperature, Heart Rate)
 
 ### PatientProfile
 
@@ -174,20 +184,24 @@ The application is fully responsive and optimized for:
 
 ## 📝 Best Practices Implemented
 
-1. **Component Structure**: Modular, reusable components
-2. **State Management**: React hooks (useState, useEffect)
-3. **Code Organization**: Clear folder structure
+1. **Component Structure**: Modular, reusable components with clear separation of concerns
+2. **State Management**: React hooks (useState, useEffect) for data fetching and state
+3. **Code Organization**: Clear folder structure with well-commented code
 4. **Error Handling**: Try-catch blocks and user-friendly error messages
-5. **Loading States**: Smooth loading indicators
-6. **Security**: Client-side credential encoding (not hardcoded)
-7. **Accessibility**: Semantic HTML and ARIA labels
-8. **Performance**: Optimized imports and lazy loading ready
+5. **Loading States**: Smooth loading indicators for better UX
+6. **Security**: Client-side credential encoding (not hardcoded in plaintext)
+7. **Accessibility**: Semantic HTML and ARIA labels where appropriate
+8. **Performance**: Optimized assets (only 5 essential images), clean bundle
+9. **Code Quality**: Natural, helpful comments explaining logic and decisions
+10. **Data Flow**: All components use API data via props - zero hardcoded data
 
 ## ⚠️ Important Notes
 
-- **Focus**: Only Jessica Taylor's data is displayed (as per requirements)
-- **Static UI Elements**: Search, dropdown, and ellipsis buttons are UI-only (no interaction logic)
-- **Data Matching**: Some API data doesn't match the design exactly (this is expected)
+- **Focus**: Only Jessica Taylor's detailed data is displayed in the main dashboard (as per requirements)
+- **Static UI Elements**: Search, dropdown, and ellipsis buttons are UI-only (no interaction logic implemented)
+- **Data Matching**: Some API data doesn't match the design exactly (this is expected from the provided API)
+- **Asset Optimization**: Unused files removed - only 5 essential images remain in the project
+- **Real-time Data**: All patient information, charts, and stats come directly from the API
 
 ## 🐛 Troubleshooting
 
