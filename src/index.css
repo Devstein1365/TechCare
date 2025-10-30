@@ -36,15 +36,3 @@ body {
   scrollbar-color: #c4c4c4 #f1f1f1;
 }
 
-/* Responsive Design */
-/* @media (max-width: 1400px) {
-  .grid-cols-\[370px_1fr_370px\] {
-    grid-template-columns: 320px 1fr 320px;
-  }
-}
-
-@media (max-width: 1200px) {
-  .grid-cols-\[370px_1fr_370px\] {
-    grid-template-columns: 1fr;
-  }
-} */
