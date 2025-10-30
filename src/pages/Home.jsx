@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { fetchPatientData } from '../services/api';
-import Navbar from '../components/UI/Navbar';
-import PatientsList from '../components/UI/PatientsList';
-import DiagnosisHistory from '../components/DiagnosisHistory';
-import DiagnosticList from '../components/DiagnosticList';
-import PatientProfile from '../components/PatientProfile';
-import LabResults from '../components/LabResults';
+import React, { useEffect, useState } from "react";
+import { fetchPatientData } from "../services/api";
+import Navbar from "../components/UI/Navbar";
+import PatientsList from "../components/UI/PatientsList";
+import DiagnosisHistory from "../components/DiagnosisHistory";
+import DiagnosticList from "../components/DiagnosticList";
+import PatientProfile from "../components/PatientProfile";
+import LabResults from "../components/LabResults";
 
 const Home = () => {
+  // State to hold the patient data from API
   const [patientData, setPatientData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Fetch patient data when component first loads
   useEffect(() => {
     const loadPatientData = async () => {
       try {
@@ -21,7 +23,7 @@ const Home = () => {
         setError(null);
       } catch (err) {
         setError(err.message);
-        console.error('Failed to load patient data:', err);
+        console.error("Failed to load patient data:", err);
       } finally {
         setLoading(false);
       }
@@ -30,6 +32,7 @@ const Home = () => {
     loadPatientData();
   }, []);
 
+  // Show loading spinner while fetching data
   if (loading) {
     return (
       <div className="min-h-screen bg-[#F6F7F8] flex items-center justify-center">
@@ -41,6 +44,7 @@ const Home = () => {
     );
   }
 
+  // Show error message if API call fails
   if (error) {
     return (
       <div className="min-h-screen bg-[#F6F7F8] flex items-center justify-center">
@@ -67,20 +71,20 @@ const Home = () => {
       {/* Navbar */}
       <Navbar />
 
-      {/* Main Content Grid */}
+      {/* Main dashboard layout - 3 columns */}
       <div className="grid grid-cols-[370px_1fr_370px] gap-8">
-        {/* Left Column - Patients List */}
+        {/* Left sidebar - shows all patients */}
         <div>
           <PatientsList />
         </div>
 
-        {/* Middle Column - Diagnosis History & Diagnostic List */}
+        {/* Center section - charts and diagnosis info */}
         <div>
           <DiagnosisHistory diagnosisHistory={patientData.diagnosis_history} />
           <DiagnosticList diagnosticList={patientData.diagnostic_list} />
         </div>
 
-        {/* Right Column - Patient Profile & Lab Results */}
+        {/* Right sidebar - patient details and lab results */}
         <div>
           <PatientProfile patient={patientData} />
           <LabResults labResults={patientData.lab_results} />

@@ -5,8 +5,10 @@ import Home from "./pages/Home";
 const App = () => {
   return (
     <>
+      {/* Main app routing setup */}
       <BrowserRouter>
         <Routes>
+          {/* Default route shows the home dashboard */}
           <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>

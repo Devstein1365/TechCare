@@ -11,6 +11,7 @@ const PatientsList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Fetch all patients when component loads
   useEffect(() => {
     const fetchPatients = async () => {
       try {
@@ -68,7 +69,7 @@ const PatientsList = () => {
         </div>
       )}
 
-      {/* Patients List */}
+      {/* List of all patients */}
       {!loading && !error && (
         <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar">
           <div className="space-y-4">
@@ -77,7 +78,7 @@ const PatientsList = () => {
                 key={index}
                 className={`flex items-center justify-between p-4 rounded-xl cursor-pointer transition ${
                   patient.name === "Jessica Taylor"
-                    ? "bg-[#D8FCF7]"
+                    ? "bg-[#D8FCF7]" // Highlight Jessica Taylor
                     : "hover:bg-gray-50"
                 }`}
               >

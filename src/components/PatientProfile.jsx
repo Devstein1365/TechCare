@@ -9,6 +9,7 @@ const PatientProfile = ({ patient }) => {
     return <div>No patient data available</div>;
   }
 
+  // Convert the date to a readable format like "January 1, 1990"
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", {
@@ -93,7 +94,7 @@ const PatientProfile = ({ patient }) => {
         {/* Insurance Provider */}
         <div className="flex items-center gap-4">
           <div className="w-10 h-10 rounded-full bg-[#F6F7F8] flex items-center justify-center shrink-0">
-            <LuShieldCheck/>
+            <LuShieldCheck />
           </div>
           <div>
             <p className="text-sm text-[#072635] font-medium mb-1">

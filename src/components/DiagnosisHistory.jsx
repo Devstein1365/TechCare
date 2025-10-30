@@ -16,6 +16,7 @@ import {
 } from "chart.js";
 import { FaSortDown, FaSortUp } from "react-icons/fa";
 
+// Register Chart.js components we'll be using
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -32,10 +33,10 @@ const DiagnosisHistory = ({ diagnosisHistory }) => {
     return <div>No diagnosis history available</div>;
   }
 
-  // Get last 6 months and reverse to show oldest to newest
+  // Grab the last 6 months of data and flip the order so it shows chronologically
   const last6Months = diagnosisHistory.slice(0, 6).reverse();
 
-  // Prepare chart data
+  // Setup the chart data with systolic and diastolic readings
   const chartData = {
     labels: last6Months.map(
       (entry) => `${entry.month.substring(0, 3)}, ${entry.year}`
@@ -44,9 +45,9 @@ const DiagnosisHistory = ({ diagnosisHistory }) => {
       {
         label: "Systolic",
         data: last6Months.map((entry) => entry.blood_pressure.systolic.value),
-        borderColor: "#E66FD2",
+        borderColor: "#E66FD2", // Pink line
         backgroundColor: "rgba(230, 111, 210, 0.1)",
-        tension: 0.4,
+        tension: 0.4, // Makes the line curved instead of straight
         pointBackgroundColor: "#E66FD2",
         pointBorderColor: "#E66FD2",
         pointRadius: 6,
@@ -55,7 +56,7 @@ const DiagnosisHistory = ({ diagnosisHistory }) => {
       {
         label: "Diastolic",
         data: last6Months.map((entry) => entry.blood_pressure.diastolic.value),
-        borderColor: "#8C6FE6",
+        borderColor: "#8C6FE6", // Purple line
         backgroundColor: "rgba(140, 111, 230, 0.1)",
         tension: 0.4,
         pointBackgroundColor: "#8C6FE6",
@@ -66,12 +67,13 @@ const DiagnosisHistory = ({ diagnosisHistory }) => {
     ],
   };
 
+  // Chart configuration - styling and behavior
   const options = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: false,
+        display: false, // We're using custom legend in the sidebar
       },
       tooltip: {
         backgroundColor: "rgba(7, 38, 53, 0.9)",
@@ -88,7 +90,7 @@ const DiagnosisHistory = ({ diagnosisHistory }) => {
         min: 60,
         max: 180,
         ticks: {
-          stepSize: 20,
+          stepSize: 20, // Shows 60, 80, 100, 120, 140, 160, 180
           color: "#072635",
           font: {
             size: 12,
@@ -96,7 +98,7 @@ const DiagnosisHistory = ({ diagnosisHistory }) => {
         },
         grid: {
           display: true,
-          color: "#E0E5E7",
+          color: "#E0E5E7", // Light gray horizontal lines
           drawBorder: false,
           lineWidth: 1,
         },
@@ -112,7 +114,7 @@ const DiagnosisHistory = ({ diagnosisHistory }) => {
           },
         },
         grid: {
-          display: false,
+          display: false, // No vertical lines
         },
         border: {
           display: false,
@@ -121,7 +123,7 @@ const DiagnosisHistory = ({ diagnosisHistory }) => {
     },
   };
 
-  // Get latest entry for the summary cards
+  // Pull the most recent readings for the stats cards
   const latestEntry = diagnosisHistory[0];
 
   return (

@@ -10,12 +10,12 @@ import { IoSettingsOutline } from "react-icons/io5";
 const Navbar = () => {
   return (
     <nav className="bg-white rounded-full w-full flex items-center justify-between px-8 py-3 mb-[18px]">
-      {/* Logo */}
+      {/* App Logo */}
       <div className="flex items-center">
         <img src={TestLogo} alt="Tech Care" className="w-[210px] h-12" />
       </div>
 
-      {/* Navigation Menu */}
+      {/* Main navigation links */}
       <div className="flex items-center gap-10">
         <a
           href="#"
@@ -24,6 +24,7 @@ const Navbar = () => {
           <GoHome />
           <span className="font-bold text-[14px]">Overview</span>
         </a>
+        {/* Active page - Patients section */}
         <a
           href="#"
           className="flex items-center gap-2 bg-[#01F0FF] px-4 py-2 rounded-[41px] text-[#072635] transition"
@@ -54,7 +55,7 @@ const Navbar = () => {
         </a>
       </div>
 
-      {/* User Profile Section */}
+      {/* Doctor profile info on the right */}
       <div className="flex items-center gap-3">
         <img
           src={doctorImage}
@@ -62,9 +63,12 @@ const Navbar = () => {
           className="w-11 h-11 rounded-full object-cover"
         />
         <div className="border-r border-[#EDEDED] pr-3">
-          <p className="text-[14px] font-bold text-[#072635]">Dr. Jose Simmons</p>
+          <p className="text-[14px] font-bold text-[#072635]">
+            Dr. Jose Simmons
+          </p>
           <p className="text-[14px] text-[#707070]">General Practitioner</p>
         </div>
+        {/* Settings and more options */}
         <div className="flex items-center gap-2">
           <IoSettingsOutline />
           <MdOutlineMoreVert />
